@@ -1,0 +1,28 @@
+.button {
+	border-radius: 5px;
+	background: #5970ff;
+	padding: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	letter-spacing: 0.01em;
+	font-size: 22px;
+	min-height: 59px;
+}
+
+.button:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.button:global(.current) {
+	background-color: #d2d2d2;
+	color: #000;
+}
+
+@media screen and (max-width: 500px) {
+	.button {
+		font-size: 20px;
+	}
+}

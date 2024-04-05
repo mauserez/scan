@@ -1,0 +1,27 @@
+.logo {
+	width: 141px;
+	height: 141px;
+	position: relative;
+	margin-right: 401px;
+	min-width: 111px;
+	transition: margin 0.3s;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1300px) {
+	.logo {
+		margin-right: 180px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.logo {
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.logo {
+		width: 111px;
+		height: 111px;
+	}
+}

@@ -1,0 +1,15 @@
+.container {
+	width: 100%;
+	flex: 1;
+	padding: 69px 60px 118px 60px;
+}
+
+.containerContent {
+	max-width: 1320px;
+}
+
+@media screen and (max-width: 500px) {
+	.container {
+		padding: 20px 26px 43px 14px;
+	}
+}

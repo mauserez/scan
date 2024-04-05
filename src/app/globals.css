@@ -2,32 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+	font-family: "Ferry";
+	src: url("/fonts/ferry_black.otf");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+	--main-color: #000;
+	--secondary-color: #029491;
+	--gray-color: #d2d2d2;
+	--white-color: #fff;
+
+	--main-bg: #fff;
+	--secondary-bg: #029491;
+	--footer-bg: #029491;
+	--gray-bg: #d9d9d9;
+
+	--extra-bg-green: #7ce3e1;
+	--extra-bg-yellow: #ffb64f;
+
+	--font-inter: "Inter";
+	--font-ferry: "Ferry";
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body,
+.core-section {
+	min-height: 100vh;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	font-family: var(--font-inter), "Helvetica", sans-serif;
+	color: var(--main-color);
+	background-color: var(--main-bg);
+	letter-spacing: 0.01em;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.core-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
