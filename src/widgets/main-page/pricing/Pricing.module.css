@@ -1,0 +1,17 @@
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+	gap: 32px;
+}
+
+@media screen and (max-width: 500px) {
+	.cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 43px;
+	}
+
+	.cards :global(.pricing__description) {
+		white-space: initial;
+	}
+}

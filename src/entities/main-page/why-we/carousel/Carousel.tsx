@@ -15,11 +15,11 @@ import { CarouselCard } from "../carousel-card/CarouselCard";
 
 export const Carousel = () => {
 	const is500 = useMediaQuery("(max-width: 800px)");
-	const is1024 = useMediaQuery("(max-width: 1199px)");
+	const is1300 = useMediaQuery("(max-width: 1299px)");
 
 	let slidesPerView = 3;
 
-	if (is1024) {
+	if (is1300) {
 		slidesPerView = 2;
 	}
 
@@ -34,11 +34,11 @@ export const Carousel = () => {
 			spaceBetween={0}
 			navigation={true}
 			loop={true}
-			autoplay={{
+			/* autoplay={{
 				delay: 3000,
 				disableOnInteraction: false,
 				pauseOnMouseEnter: true,
-			}}
+			}} */
 			modules={[Navigation, Autoplay]}
 			className={clsx(s.slider, "fadeIn")}
 		>

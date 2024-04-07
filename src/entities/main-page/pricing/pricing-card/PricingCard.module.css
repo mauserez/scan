@@ -1,0 +1,130 @@
+.card {
+	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.curCard {
+	border: 1px solid var(--extra-bg-yellow);
+}
+
+.title {
+	padding: 30px 30px 34px 30px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: relative;
+}
+
+.curTitle {
+	background-color: var(--extra-bg-yellow);
+}
+
+.titleHeader {
+	font-weight: 500;
+	font-size: 30px;
+}
+
+.titleImage {
+	position: absolute;
+	right: 10px;
+	top: 16px;
+}
+
+.body {
+	padding: 33px 30px 24px 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 60px;
+	width: 100%;
+	margin-top: auto;
+	position: relative;
+}
+
+.curPricingTag {
+	font-size: 14px;
+	min-height: 24px;
+	background-color: #3ba5e0;
+	position: absolute;
+	padding: 3px 13px;
+	font-weight: 400;
+	border-radius: 10px;
+	color: var(--white-color);
+	top: 12px;
+	right: 10px;
+}
+
+.priceBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+}
+
+.priceWrap {
+	display: flex;
+	gap: 19px;
+	font-weight: 500;
+	align-items: center;
+}
+
+.price {
+	font-size: 30px;
+}
+
+.priceLined {
+	font-size: 25px;
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
+.priceDescription {
+	white-space: nowrap;
+}
+
+.adv {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.advTitle {
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.advList {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.advItem {
+	display: flex;
+	gap: 8px;
+}
+
+.cardBtn {
+	font-size: 20px;
+}
+
+.curPricingBtn {
+	background-color: #d2d2d2;
+	color: var(--main-color);
+}
+
+@media screen and (max-width: 500px) {
+	.title {
+		padding: 30px 24px 34px 24px;
+	}
+
+	.body {
+		padding: 20px 24px 31px 24px;
+		gap: 37px;
+	}
+
+	.cardBtn {
+		font-size: 18px;
+	}
+}

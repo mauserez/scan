@@ -1,15 +1,8 @@
 .slider {
-	height: 245px;
 	padding-left: 32px;
 	padding-right: 32px;
 	margin-left: -20px;
 	margin-right: -20px;
-}
-
-@media screen and (max-width: 500px) {
-	.slider {
-		height: 208px;
-	}
 }
 
 .slide {
@@ -17,6 +10,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 18px;
+	height: auto;
 }
 
 .slider :global(.swiper-button-next::after),
