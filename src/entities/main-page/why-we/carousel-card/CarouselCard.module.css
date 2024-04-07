@@ -1,0 +1,21 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: 30px 20px;
+	gap: 19px;
+}
+
+.icon {
+	width: 64px;
+	height: 64px;
+}
+
+.text {
+	font-size: 18px;
+}
+
+@media screen and (max-width: 500px) {
+	.card {
+		padding: 30px 18px;
+	}
+}

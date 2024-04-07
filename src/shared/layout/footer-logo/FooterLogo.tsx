@@ -1,16 +1,27 @@
 import Image from "next/image";
-import s from "./FooterLogo.module.css";
+import clsx from "clsx";
 
-export const FooterLogo = () => {
+import s from "./FooterLogo.module.css";
+import Link from "next/link";
+
+type FooterLogoProps = {
+	className?: string;
+};
+
+export const FooterLogo = (props: FooterLogoProps) => {
+	const { className = "" } = props;
+
 	return (
-		<div className={s.logo}>
-			<Image
-				fill
-				sizes="(max-width: 500px) 111px, 141px"
-				src="/images/logo/logo-footer.svg"
-				alt="logo"
-				priority={true}
-			/>
-		</div>
+		<Link href={"/"}>
+			<div className={clsx(s.logo, className)}>
+				<Image
+					fill
+					sizes="(max-width: 500px) 111px, 141px"
+					src="/images/logo/logo-footer.svg"
+					alt="logo"
+					priority={true}
+				/>
+			</div>
+		</Link>
 	);
 };

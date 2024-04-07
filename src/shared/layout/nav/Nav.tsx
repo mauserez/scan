@@ -1,12 +1,26 @@
 import Link from "next/link";
 import s from "./Nav.module.css";
 
-export const Nav = () => {
+type NavProps = {
+	closeNav?: () => void;
+};
+
+export const Nav = (props: NavProps) => {
+	const { closeNav } = props;
+
+	const links = [
+		{ href: "/", label: "Главная" },
+		{ href: "/pricing", label: "Тарифы" },
+		{ href: "/faq", label: "FAQ" },
+	];
+
 	return (
 		<nav className={s.nav}>
-			<Link href={"/"}>Главная</Link>
-			<Link href={"/pricing"}>Тарифы</Link>
-			<Link href={"/fag"}>FAQ</Link>
+			{links.map((link) => (
+				<Link onClick={closeNav} key={link.label} href={link.href}>
+					{link.label}
+				</Link>
+			))}
 		</nav>
 	);
 };

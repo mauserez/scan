@@ -39,6 +39,7 @@ body,
 
 body {
 	font-family: var(--font-inter), "Helvetica", sans-serif;
+	font-weight: 400;
 	color: var(--main-color);
 	background-color: var(--main-bg);
 	letter-spacing: 0.01em;
@@ -48,4 +49,19 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+}
+
+.fadeIn {
+	animation: fadeInAnimation ease 3s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

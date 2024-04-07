@@ -1,10 +1,23 @@
+import Link from "next/link";
 import s from "./NavSignButtons.module.css";
 
-export const NavSignButtons = () => {
+type NavSignButtonsProps = {
+	closeNav?: () => void;
+};
+export const NavSignButtons = (props: NavSignButtonsProps) => {
+	const { closeNav } = props;
+	const links = [
+		{ href: "/register", label: "Зарегистрироваться", className: "register" },
+		{ href: "/login", label: "Войти", className: "login" },
+	];
+
 	return (
 		<div className={s.buttons}>
-			<div className={s.register}>Зарегистрироваться</div>|
-			<div className={s.login}>Войти</div>
+			{links.map((link) => (
+				<Link className={s[link.className]} key={link.href} href={link.href}>
+					{link.label}
+				</Link>
+			))}
 		</div>
 	);
 };
