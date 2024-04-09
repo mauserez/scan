@@ -14,7 +14,12 @@ export const NavSignButtons = (props: NavSignButtonsProps) => {
 	return (
 		<div className={s.buttons}>
 			{links.map((link) => (
-				<Link className={s[link.className]} key={link.href} href={link.href}>
+				<Link
+					onClick={closeNav}
+					className={s[link.className]}
+					key={link.href}
+					href={link.href}
+				>
 					{link.label}
 				</Link>
 			))}

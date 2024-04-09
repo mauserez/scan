@@ -1,0 +1,19 @@
+.checkbox {
+}
+
+.checkbox input {
+	border-color: #999999;
+	cursor: pointer;
+}
+.checkbox label {
+	color: #999;
+	font-size: 18px;
+}
+
+.checkbox input:checked {
+	border-color: var(--main-color);
+}
+
+.checkbox:has(input:checked) label {
+	color: var(--main-color);
+}

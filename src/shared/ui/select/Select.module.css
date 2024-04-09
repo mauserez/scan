@@ -1,8 +1,8 @@
-.input input {
+.select input {
 	border: 1px solid #c7c7c7;
 	border-radius: 5px;
 	outline: none;
-	background: #fff;
+	//background: #fff;
 	width: 100%;
 	min-height: 43px;
 	padding: 10px 17px;
@@ -10,36 +10,40 @@
 	font-size: 14px;
 }
 
-.input label {
+.select input::placeholder {
+	color: var(--main-color);
+}
+
+.select label {
 	font-size: 18px;
 	margin-bottom: 20px;
 	font-weight: 400;
 }
 
-.input input:focus,
-.input input:focus-visible {
+.select:focus,
+.select:focus-visible {
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
 }
 
-.input input[data-error="true"] {
-	box-shadow: 0 0 20px 0 rgba(255, 89, 89, 0.2);
+.select input[data-error="true"] {
 	border: 1px solid #ff5959;
+	box-shadow: 0 0 20px 0 rgba(255, 89, 89, 0.2);
 }
 
-.input label :global(.mantine-InputWrapper-required) {
+.select label :global(.mantine-InputWrapper-required) {
 	color: var(--main-color);
 	top: -5px;
 	position: relative;
 	left: -5px;
 }
 
-.input:has(input[data-error="true"])
+.select:has(input[data-error="true"])
 	label
 	:global(.mantine-InputWrapper-required) {
 	color: #ff5959;
 }
 
-.input :global(.mantine-InputWrapper-error) {
+.select :global(.mantine-InputWrapper-error) {
 	font-size: 14px;
 	color: #ff5959;
 	text-align: center;

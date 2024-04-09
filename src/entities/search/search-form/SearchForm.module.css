@@ -1,0 +1,39 @@
+.form {
+	padding: 30px 44px;
+	display: grid;
+	grid-template-columns: 372px auto;
+	position: relative;
+}
+
+.input label {
+	white-space: nowrap;
+}
+
+.mainFields {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.checkboxes {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.highInputWidth {
+	width: 242px;
+}
+
+.dates {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+.submit {
+	position: absolute;
+	right: 39px;
+	bottom: 32px;
+	min-width: 305px;
+}

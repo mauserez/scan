@@ -1,14 +1,20 @@
-import React, { ComponentProps } from "react";
-import s from "./Button.module.css";
-import clsx from "clsx";
+import {
+	Button as MButton,
+	ButtonProps as MButtonProps,
+	PolymorphicComponentProps,
+} from "@mantine/core";
 
-type ButtonProps = ComponentProps<"button">;
+import clsx from "clsx";
+import s from "./Button.module.css";
+
+type ButtonProps = PolymorphicComponentProps<"button", MButtonProps>;
+
 export const Button = (props: ButtonProps) => {
 	const { type = "submit", className = "", children, ...btnProps } = props;
 
 	return (
-		<button className={clsx(s.button, className)} type={type} {...btnProps}>
+		<MButton className={clsx(s.button, className)} type={type} {...btnProps}>
 			{children}
-		</button>
+		</MButton>
 	);
 };

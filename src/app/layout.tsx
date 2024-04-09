@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextAuthProvider } from "@/providers/next-auth/NextAuthProvider";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
-import { theme } from "../../theme";
-import { Header, Footer, Container } from "@/shared/layout";
+import { MantineProvider } from "@mantine/core";
+
+//import { theme } from "../../theme";
+import { Header, Footer } from "@/shared/layout";
 
 import "./reset.css";
 import "./globals.css";
+import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +27,11 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<section className="core-section">
-					<MantineProvider theme={theme}>
+					<MantineProvider>
 						<NextAuthProvider>
 							<Header />
-							<Container>{children}</Container>
+							{/* <Container key={Math.random()}>{children}</Container> */}
+							{children}
 							<Footer />
 						</NextAuthProvider>
 					</MantineProvider>

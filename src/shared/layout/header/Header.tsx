@@ -31,7 +31,7 @@ export const Header = () => {
 						<NavIconClose closeNav={handleNavClose} />
 					</div>
 					<Nav closeNav={handleNavClose} />
-					<NavSignButtons />
+					<NavSignButtons closeNav={handleNavClose} />
 				</div>
 
 				<NavIconOpen openNav={handleNavOpen} />
@@ -43,6 +43,7 @@ export const Header = () => {
 type NavIconCloseProps = {
 	closeNav: () => void;
 };
+
 const NavIconClose = (props: NavIconCloseProps) => {
 	const { closeNav } = props;
 	return (
