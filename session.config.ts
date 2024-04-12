@@ -1,7 +1,6 @@
-import { SessionUserType, getAccess } from "./src/token/actions";
+import { SessionUserType, getToken } from "./src/token/actions";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
-
 import { User } from "next-auth";
 
 declare module "next-auth" {
@@ -26,12 +25,11 @@ export const nextAuthOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
-
 			credentials: {
-				username: {
-					label: "username",
+				login: {
+					label: "login",
 					type: "text",
-					placeholder: "input username",
+					placeholder: "input login",
 				},
 
 				password: {
@@ -42,17 +40,18 @@ export const nextAuthOptions: NextAuthOptions = {
 			},
 
 			async authorize(credentials) {
-				if (!credentials?.password || !credentials.username) {
+				if (!credentials?.password || !credentials.login) {
 					throw new Error("Please provide all credentials");
 				}
+				const userResponse = await getToken(credentials);
 
-				const empAuthResponse = await getAccess(credentials);
-
-				if (empAuthResponse.errorText) {
-					throw new Error(empAuthResponse.errorText);
+				if (userResponse.errorText) {
+					throw new Error(userResponse.errorText);
 				}
 
-				return empAuthResponse.data;
+				console.log(userResponse.data);
+
+				return userResponse.data;
 			},
 		}),
 	],

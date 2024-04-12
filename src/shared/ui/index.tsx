@@ -7,3 +7,5 @@ export { Input } from "./input/Input";
 export { Select } from "./select/Select";
 export { Checkbox } from "./checkbox/Checkbox";
 export { Datepicker } from "./datepicker/Datepicker";
+
+export { InputInn } from "./input-inn/InputInn";

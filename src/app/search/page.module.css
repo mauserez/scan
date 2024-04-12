@@ -1,7 +1,16 @@
 .container {
 	position: relative;
 	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.titleSection {
+	display: flex;
 	flex-direction: column;
+	gap: 25px;
+	max-width: 800px;
 }
 
 .title {
@@ -15,12 +24,32 @@
 	letter-spacing: 0.02em;
 }
 
+.form {
+	width: 100%;
+	max-width: 872px;
+	margin-top: 47px;
+}
+
 .image {
-	margin-left: 110px;
-	margin-top: 20px;
 	width: 321px;
 	height: 342px;
-	position: relative;
+	align-self: flex-end;
+}
+
+.docImage {
+	position: absolute;
+	left: 850px;
+	top: 70px;
+	width: 91px;
+	height: 111px;
+}
+
+.foldersImage {
+	position: absolute;
+	left: 1130px;
+	top: 90px;
+	width: 140px;
+	height: 69px;
 }
 
 @media screen and (min-width: 501px) and (max-width: 1439px) {
@@ -32,5 +61,48 @@
 @media screen and (max-width: 500px) {
 	.title {
 		font-size: 28px;
+	}
+
+	.subTitle {
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.container {
+		justify-content: center;
+	}
+	.titleSection {
+		width: 85%;
+	}
+
+	.image {
+		position: relative;
+		left: 20px;
+	}
+
+	.form {
+		position: relative;
+	}
+
+	.docImage {
+		right: 0;
+		top: -200px;
+		left: auto;
+		width: 58px;
+		height: 71px;
+	}
+
+	.foldersImage {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 501px) and (max-width: 1360px) {
+	.image {
+		display: none;
+	}
+	.foldersImage {
+		display: none;
 	}
 }

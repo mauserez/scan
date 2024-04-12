@@ -1,0 +1,89 @@
+.form {
+	padding: 30px 44px;
+	display: grid;
+	grid-template-columns: 372px auto;
+	position: relative;
+}
+
+.input label {
+	white-space: nowrap;
+}
+
+.mainFields {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.shortInput {
+	width: 242px;
+}
+
+.checkboxes {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.highInputWidth {
+	width: 242px;
+}
+
+.dates {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 50%));
+	gap: 24px;
+}
+
+.dates label {
+	white-space: nowrap;
+}
+
+.submit {
+	position: absolute;
+	right: 39px;
+	bottom: 32px;
+	min-width: 305px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.buttonNote {
+	font-size: 14px;
+	color: #949494;
+}
+
+@media screen and (max-width: 900px) {
+	.form {
+		grid-template-columns: 260px auto;
+	}
+
+	.submit {
+		min-width: 200px;
+	}
+}
+
+@media screen and (max-width: 690px) {
+	.form {
+		display: flex;
+		flex-direction: column;
+		padding: 24px 26px 37px 14px;
+		flex-wrap: wrap;
+	}
+
+	.shortInput {
+		width: 100%;
+	}
+
+	.checkboxes {
+		margin-top: 32px;
+	}
+
+	.submit {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		margin-top: 40px;
+	}
+}

@@ -8,12 +8,6 @@ type InputProps = TextInputProps & {
 };
 
 export const Input = (props: InputProps) => {
-	const { className = "", width = "100%", ...inputProps } = props;
-	return (
-		<TextInput
-			style={{ width: width }}
-			className={clsx(s.input, className)}
-			{...inputProps}
-		/>
-	);
+	const { className = "", ...inputProps } = props;
+	return <TextInput className={clsx(s.input, className)} {...inputProps} />;
 };

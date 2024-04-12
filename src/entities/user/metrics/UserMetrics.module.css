@@ -1,0 +1,24 @@
+.metrics {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	padding: 14px 10px 18px;
+}
+
+.metric {
+	display: flex;
+	gap: 4px;
+}
+
+.metricText {
+	font-size: 10px;
+}
+
+.metricValue {
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.metricLimit {
+	color: #8ac540;
+}

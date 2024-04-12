@@ -4,6 +4,7 @@ import { Button, Form, Input } from "@/shared/ui";
 import { useForm, isNotEmpty } from "@mantine/form";
 import Image from "next/image";
 import { useMask } from "@react-input/mask";
+import { signIn } from "next-auth/react";
 
 import inputStyle from "../../shared/ui/input/Input.module.css";
 import clsx from "clsx";
@@ -16,15 +17,13 @@ const types = {
 
 export const LoginForm = () => {
 	const inputRef = useMask({
-		mask: "___________________________________________",
-		replacement: "_",
+		mask: "````````````````````",
+		replacement: "`",
 		modify: (input) => {
 			const isNumber = !isNaN(parseInt(input[0]));
 			return {
-				mask: isNumber
-					? "+7 ___ ___ __ __"
-					: "___________________________________________",
-				replacement: isNumber ? { _: /\d/ } : "_",
+				mask: isNumber ? "+7 ___ ___ __ __" : "````````````````````",
+				replacement: isNumber ? { _: /\d/ } : "`",
 				showMask: isNumber ? true : false,
 			};
 		},
@@ -42,15 +41,27 @@ export const LoginForm = () => {
 	});
 
 	const [type, setType] = useState<"login" | "register">("login");
-
 	const enabled = form.isValid("login") && form.isValid("password");
 	const [loading, setLoading] = useState(false);
-	const isNumber = !!(
-		Number.isInteger(Number(form.values.login)) && form.values.login
-	);
 
 	return (
-		<Form className={s.form} onSubmit={form.onSubmit(() => {})}>
+		<Form
+			onSubmit={form.onSubmit(async (values) => {
+				console.log(values);
+
+				const res = await signIn("credentials", {
+					...form.values,
+					redirect: false,
+				});
+
+				console.log(res);
+
+				setLoading(false);
+
+				console.log(res);
+			})}
+			className={s.form}
+		>
 			<Image
 				className={s.lock}
 				src="/images/login/lock.svg"
@@ -75,7 +86,6 @@ export const LoginForm = () => {
 					onClick={() => {
 						setType("register");
 					}}
-					style={{ flex: 2 }}
 					className={clsx({
 						[s.titleItem]: true,
 						[s.register]: true,
@@ -100,14 +110,7 @@ export const LoginForm = () => {
 				</div>
 			</div>
 
-			<Button
-				onClick={() => {
-					setLoading(true);
-				}}
-				loading={loading}
-				className={s.btn}
-				disabled={!enabled}
-			>
+			<Button loading={loading} className={s.btn} disabled={!enabled}>
 				{types[type]}
 			</Button>
 		</Form>
