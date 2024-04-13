@@ -8,8 +8,9 @@ export const PRICING_LIST: Pricing[] = [
 			titleDescription: "Для небольшого исследования",
 			titleImage: (
 				<Image
-					width={92}
-					height={83}
+					priority
+					width={92.24}
+					height={83.15}
 					src="/images/pricing/images/lamp.svg"
 					alt="lamp"
 				/>
@@ -34,8 +35,9 @@ export const PRICING_LIST: Pricing[] = [
 			titleBack: "#7ce3e1",
 			titleImage: (
 				<Image
-					width={93}
-					height={104}
+					priority
+					width={93.76}
+					height={103.97}
 					src="/images/pricing/images/target.svg"
 					alt="lamp"
 				/>
@@ -60,6 +62,7 @@ export const PRICING_LIST: Pricing[] = [
 			titleColor: "#fff",
 			titleImage: (
 				<Image
+					priority
 					width={96}
 					height={80}
 					src="/images/pricing/images/note.svg"

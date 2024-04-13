@@ -56,9 +56,7 @@ export const PricingCard = (props: PricingCardProps) => {
 			>
 				<div className={s.titleHeader}>{titleText}</div>
 				<div>{titleDescription}</div>
-				<div className={s.titleImage}>
-					{titleImage}
-				</div>
+				<div className={s.titleImage}>{titleImage}</div>
 			</div>
 			<div className={s.body}>
 				{current ? <div className={s.curPricingTag}>Текущий тариф</div> : null}

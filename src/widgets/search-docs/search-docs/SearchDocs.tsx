@@ -6,8 +6,7 @@ import s from "./SearchDocs.module.css";
 import { useSessionUser } from "@/shared/session/clientHooks";
 
 export const SearchDocs = () => {
-	const user = useSessionUser();
-	console.log(user);
+	//const user = useSessionUser();
 
 	return (
 		<div className={s.container}>

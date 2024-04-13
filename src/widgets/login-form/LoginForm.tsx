@@ -9,6 +9,7 @@ import { signIn } from "next-auth/react";
 import inputStyle from "../../shared/ui/input/Input.module.css";
 import clsx from "clsx";
 import s from "./LoginForm.module.css";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const types = {
 	login: "Войти",
@@ -16,6 +17,12 @@ const types = {
 };
 
 export const LoginForm = () => {
+	const redirectUrl = String(useSearchParams().get("callbackUrl"));
+	const host = String(process.env.NEXT_PUBLIC_HOST);
+	const onSite = String(redirectUrl).startsWith(host);
+
+	const router = useRouter();
+
 	const inputRef = useMask({
 		mask: "````````````````````",
 		replacement: "`",
@@ -47,18 +54,22 @@ export const LoginForm = () => {
 	return (
 		<Form
 			onSubmit={form.onSubmit(async (values) => {
-				console.log(values);
+				setLoading(true);
 
 				const res = await signIn("credentials", {
 					...form.values,
 					redirect: false,
 				});
 
-				console.log(res);
+				if (res?.ok) {
+					if (onSite) {
+						router.push(redirectUrl);
+					} else {
+						router.push("/");
+					}
+				}
 
 				setLoading(false);
-
-				console.log(res);
 			})}
 			className={s.form}
 		>

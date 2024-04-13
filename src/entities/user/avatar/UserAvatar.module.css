@@ -1,6 +1,7 @@
 .container {
 	display: flex;
 	align-items: center;
+	gap: 4px;
 }
 
 .user {
@@ -18,9 +19,11 @@
 	border-radius: 50%;
 	width: 32px;
 	height: 32px;
+	position: relative;
 }
 
 .signOut {
 	font-size: 10px;
 	opacity: 0.4;
+	cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import s from "./Loader.module.css";
 import clsx from "clsx";
+import s from "./Loader.module.css";
 
 export const Loader = () => {
 	return (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { NextAuthProvider } from "@/providers/next-auth/NextAuthProvider";
+import { NextAuthProvider, TantackQueryProvider } from "@/providers";
+
 import { MantineProvider } from "@mantine/core";
 
 //import { theme } from "../../theme";
@@ -29,10 +30,12 @@ export default function RootLayout({
 				<section className="core-section">
 					<MantineProvider>
 						<NextAuthProvider>
-							<Header />
-							{/* <Container key={Math.random()}>{children}</Container> */}
-							{children}
-							<Footer />
+							<TantackQueryProvider>
+								<Header />
+								{/* <Container key={Math.random()}>{children}</Container> */}
+								{children}
+								<Footer />
+							</TantackQueryProvider>
 						</NextAuthProvider>
 					</MantineProvider>
 				</section>

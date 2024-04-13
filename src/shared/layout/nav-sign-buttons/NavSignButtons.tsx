@@ -4,8 +4,10 @@ import s from "./NavSignButtons.module.css";
 type NavSignButtonsProps = {
 	closeNav?: () => void;
 };
+
 export const NavSignButtons = (props: NavSignButtonsProps) => {
 	const { closeNav } = props;
+
 	const links = [
 		{ href: "/register", label: "Зарегистрироваться", className: "register" },
 		{ href: "/login", label: "Войти", className: "login" },

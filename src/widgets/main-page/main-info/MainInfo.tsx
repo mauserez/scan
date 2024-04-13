@@ -1,8 +1,15 @@
+"use client";
+
 import { Button } from "@/shared/ui";
 import Image from "next/image";
 import s from "./MainInfo.module.css";
+import { useRouter } from "next/navigation";
+import { useIsAuth } from "@/shared/session/clientHooks";
 
 export const MainInfo = () => {
+	const auth = useIsAuth();
+	const router = useRouter();
+
 	return (
 		<div className={s.container}>
 			<div className={s.text}>
@@ -15,10 +22,24 @@ export const MainInfo = () => {
 					Комплексный анализ публикаций, получение данных
 					<br /> в формате PDF на электронную почту.
 				</div>
-				<Button className={s.btn}>Запросить данные</Button>
+				{auth ? (
+					<Button
+						onClick={() => {
+							router.push("/search");
+						}}
+						className={s.btn}
+					>
+						Запросить данные
+					</Button>
+				) : null}
 			</div>
 			<div className={s.image}>
-				<Image alt="main-image" fill src={"/images/main-page/man-search.svg"} />
+				<Image
+					priority
+					alt="main-image"
+					fill
+					src={"/images/main-page/man-search.svg"}
+				/>
 			</div>
 		</div>
 	);

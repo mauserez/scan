@@ -14,6 +14,7 @@
 		"@mantine/form": "^7.7.1",
 		"@mantine/hooks": "^7.7.1",
 		"@react-input/mask": "^1.1.0",
+		"@tanstack/react-query": "^5.29.2",
 		"axios": "^1.6.8",
 		"clsx": "^2.1.0",
 		"dayjs": "^1.11.10",
@@ -28,6 +29,7 @@
 		"swiper": "^11.1.0"
 	},
 	"devDependencies": {
+		"@tanstack/eslint-plugin-query": "^5.28.11",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",

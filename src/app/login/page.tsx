@@ -1,8 +1,14 @@
 import { LoginForm } from "@/widgets/login-form/LoginForm";
 import Image from "next/image";
 import s from "./page.module.css";
+import { isAuth } from "@/shared/session/serverHooks";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+	if (await isAuth()) {
+		redirect("/");
+	}
+
 	return (
 		<main className={s.container}>
 			<div className={s.title}>

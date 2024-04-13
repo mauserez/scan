@@ -9,3 +9,6 @@ export { Checkbox } from "./checkbox/Checkbox";
 export { Datepicker } from "./datepicker/Datepicker";
 
 export { InputInn } from "./input-inn/InputInn";
+export { SessionComponent } from "./session-component/SessionComponent";
+
+export { Loader } from "./loader/Loader";

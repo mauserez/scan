@@ -1,11 +1,19 @@
 "use client";
 import Image from "next/image";
 import { FooterLogo, HeaderLogo, Nav, NavSignButtons } from "..";
-import s from "./Header.module.css";
 import { useState } from "react";
+import { useIsAuth } from "@/shared/session/clientHooks";
+import { UserAvatar, UserMetrics } from "@/entities/user";
+import { SessionComponent } from "@/shared/ui";
+
 import clsx from "clsx";
+import s from "./Header.module.css";
+import { useSession } from "next-auth/react";
 
 export const Header = () => {
+	const auth = useIsAuth();
+	const sess = useSession();
+
 	const [navOpen, setNavOpen] = useState(false);
 
 	const handleNavClose = () => {
@@ -31,9 +39,13 @@ export const Header = () => {
 						<NavIconClose closeNav={handleNavClose} />
 					</div>
 					<Nav closeNav={handleNavClose} />
-					<NavSignButtons closeNav={handleNavClose} />
-				</div>
 
+					<SessionComponent
+						auth={<UserAvatar />}
+						notAuth={<NavSignButtons closeNav={handleNavClose} />}
+					/>
+				</div>
+				<SessionComponent auth={<UserMetrics />} />
 				<NavIconOpen openNav={handleNavOpen} />
 			</div>
 		</header>
