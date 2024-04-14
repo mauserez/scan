@@ -1,6 +1,9 @@
 "use client";
+
 import dayjs from "dayjs";
 import { isInn } from "@/shared/helpers/form";
+import { useContext } from "react";
+
 import {
 	Form,
 	Input,
@@ -11,41 +14,35 @@ import {
 	InputInn,
 } from "@/shared/ui";
 
-import { isNotEmpty, useForm } from "@mantine/form";
+import { useForm } from "@mantine/form";
+
+import { isNumber } from "@/shared/helpers/number";
+import { checkboxes } from "./checkboxes";
+import { getSearchData } from "./api/getSearchData";
+import { SearchPageContext } from "@/app/search/page";
 
 import s from "./SearchForm.module.css";
 
-type Checkboxes = {
-	value: boolean;
-	name: "full" | "biz" | "main" | "risk" | "tech" | "calendar" | "news";
-	label: string;
-}[];
-
-const checkboxes: Checkboxes = [
-	{ value: true, name: "full", label: "Признак максимальной полноты" },
-	{ value: true, name: "biz", label: "Упоминания в бизнес-контексте" },
-	{ value: true, name: "main", label: "Главная роль в публикации" },
-	{ value: false, name: "risk", label: "Публикации только с риск-факторами" },
-	{ value: false, name: "tech", label: "Включать технические новости рынков" },
-	{ value: true, name: "calendar", label: "Включать анонсы и календари" },
-	{ value: false, name: "news", label: "Включать сводки новостей" },
-];
-
 export const SearchForm = () => {
+	const { setResult } = useContext(SearchPageContext);
+
+	const today = new Date();
+	const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
 	const form = useForm({
 		initialValues: {
-			inn: "",
-			tone: "",
-			docn: "",
-			dateFrom: "",
-			dateTo: "",
-			full: true,
-			biz: true,
-			main: true,
-			risk: false,
-			tech: false,
-			calendar: true,
-			news: false,
+			inn: "77 101 370 66",
+			tonality: "any",
+			limit: "1000",
+			from: monthStart,
+			to: today,
+			maxFullness: true,
+			inBusinessNews: true,
+			onlyMainRole: true,
+			onlyWithRiskFactors: false,
+			includeTechNews: false,
+			includeAnnouncements: true,
+			includeDigests: false,
 		},
 		validate: {
 			inn: (value) => {
@@ -54,42 +51,58 @@ export const SearchForm = () => {
 					? null
 					: "Некорректные данные";
 			},
-			docn: isNotEmpty("Заполните поле"),
+			limit: (value) => {
+				const preparedValue = Number(value.trim());
+
+				return !isNumber(preparedValue) ||
+					!preparedValue ||
+					preparedValue > 1000
+					? "Число от 1 до 1000"
+					: null;
+			},
 		},
 	});
 
 	return (
 		<Form
-			onSubmit={form.onSubmit((values) => {
+			onSubmit={form.onSubmit(async (values) => {
 				const valuesToSearch = {
 					...values,
-					dateFrom: dayjs(values.dateFrom).format("DD.MM.YYYY"),
-					dateTo: dayjs(values.dateTo).format("DD.MM.YYYY"),
+					inn: values.inn.replace(/\s/g, ""),
+					from: dayjs(values.from).format("YYYY-MM-DDT00:00:00Z"),
+					to: dayjs(values.to).format("YYYY-MM-DDT23:59:59Z"),
 				};
-				console.log(valuesToSearch);
+
+				const result = await getSearchData(valuesToSearch);
+				setResult(result);
 			})}
 			className={s.form}
 		>
 			<div className={s.mainFields}>
-				<InputInn className={s.shortInput} {...form.getInputProps("inn")} />
+				<InputInn
+					placeholder="ИНН 10 или 12 цифр"
+					className={s.shortInput}
+					{...form.getInputProps("inn")}
+				/>
 				<Select
 					className={s.shortInput}
 					placeholder="Любая"
 					data={[
-						{ label: "Не проверяется", value: "any" },
+						{ label: "Любая", value: "any" },
 						{ label: "Негативная", value: "negative" },
 						{ label: "Позитивная", value: "positive" },
 					]}
 					label="Тональность"
-					{...form.getInputProps("tone")}
+					{...form.getInputProps("tonality")}
 				/>
 				<Input
 					className={s.shortInput}
-					placeholder="1"
+					placeholder="Введите от 1 до 1000"
 					type=""
 					label="Количество документов в выдаче"
 					withAsterisk
-					{...form.getInputProps("docn")}
+					maxLength={4}
+					{...form.getInputProps("limit")}
 				/>
 
 				<div className={s.dates}>
@@ -97,16 +110,17 @@ export const SearchForm = () => {
 						placeholder="Дата начала"
 						withAsterisk={true}
 						label="Диапазон поиска"
-						{...form.getInputProps("dateFrom")}
+						{...form.getInputProps("from")}
 					/>
 
 					<Datepicker
 						placeholder="Дата конца"
-						{...form.getInputProps("dateTo")}
+						{...form.getInputProps("to")}
 						label="&nbsp;"
 					/>
 				</div>
 			</div>
+
 			<div className={s.checkboxes}>
 				{checkboxes.map((checkbox) => {
 					return (
@@ -119,6 +133,7 @@ export const SearchForm = () => {
 					);
 				})}
 			</div>
+
 			<div className={s.submit}>
 				<Button style={{ width: "100%" }}>Поиск</Button>
 				<div className={s.buttonNote}>* Обязательные к заполнению поля</div>

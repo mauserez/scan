@@ -2,11 +2,11 @@
 	display: flex;
 	flex-direction: column;
 	padding: 25px 25px 39px 25px;
-	height: 100%;
+	//height: 100%;
 	position: relative;
 	right: 81px;
 	width: 420px;
-	max-height: 520px;
+	//max-height: 520px;
 	position: absolute;
 	right: 81px;
 	top: 0;
@@ -77,12 +77,19 @@
 	font-size: 14px;
 	text-decoration: underline;
 	color: #5970ff;
+	text-align: center;
+	cursor: pointer;
 }
 
 .systems {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+	margin-top: 30px;
+}
+
+.systemLabel {
+	color: #949494;
 }
 
 .systemList {
@@ -98,6 +105,9 @@
 	min-width: 96px;
 	border: 1px solid rgba(89, 112, 255, 0.51);
 	border-radius: 3px;
+	position: relative;
+	padding: 8px 18px;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 1200px) {

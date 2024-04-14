@@ -1,13 +1,10 @@
 "use client";
 
-import { SearchForm } from "@/entities/search-docs/search-form/SearchForm";
+import { SearchForm } from "@/entities/search-page";
 import Image from "next/image";
-import s from "./SearchDocs.module.css";
-import { useSessionUser } from "@/shared/session/clientHooks";
+import s from "./SearchParams.module.css";
 
-export const SearchDocs = () => {
-	//const user = useSessionUser();
-
+export const SearchParams = () => {
 	return (
 		<div className={s.container}>
 			<div>

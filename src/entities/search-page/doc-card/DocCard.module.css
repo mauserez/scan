@@ -1,0 +1,123 @@
+.doc {
+	padding: 19px 30px 36px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.docDate {
+	color: #949494;
+	font-size: 16px;
+	display: flex;
+	gap: 14px;
+}
+
+.docAuthor {
+	text-decoration: underline;
+	letter-spacing: 0.03em;
+}
+
+.docTitle {
+	margin-top: 24px;
+	font-weight: 500;
+	font-size: 26px;
+	letter-spacing: 0.02em;
+}
+
+.docBadge {
+	border-radius: 5px;
+	margin-top: 18px;
+	background-color: var(--extra-bg-yellow);
+	font-size: 12px;
+	letter-spacing: 0.02em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 11px;
+	width: fit-content;
+}
+
+.docImage {
+	margin-top: 14px;
+	border-radius: 10px;
+	width: 100%;
+	max-height: 158px;
+}
+
+.docText {
+	margin-top: 20px;
+	font-size: 16px;
+	letter-spacing: 0.02em;
+	opacity: 0.5;
+	margin-bottom: 32px;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.docFooter {
+	margin-top: 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	font-size: 16px;
+	letter-spacing: 0.02em;
+	margin-top: auto;
+}
+
+.docButton {
+	background-color: var(--extra-bg-green);
+	padding: 0 14px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+}
+
+.docLetterCount {
+	color: #949494;
+	text-align: right;
+}
+
+@media screen and (max-width: 500px) {
+	.doc {
+		padding: 19px 24px;
+	}
+
+	.docDate {
+		font-size: 14px;
+	}
+
+	.docTitle {
+		font-size: 19px;
+	}
+
+	.docBadge {
+		margin-top: 20px;
+	}
+
+	.docImage {
+		margin-top: 13px;
+	}
+
+	.docText {
+		font-size: 12px;
+		margin-top: 18px;
+	}
+
+	.docFooter {
+		margin-top: 25px;
+	}
+
+	.docButton {
+		font-size: 14px;
+	}
+
+	.docLetterCount {
+		font-size: 14px;
+	}
+
+	.showMore {
+		width: 100%;
+	}
+}

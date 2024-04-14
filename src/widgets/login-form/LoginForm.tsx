@@ -124,6 +124,38 @@ export const LoginForm = () => {
 			<Button loading={loading} className={s.btn} disabled={!enabled}>
 				{types[type]}
 			</Button>
+
+			<div className={s.restore}>Восстановить пароль</div>
+
+			<div className={s.systems}>
+				<div className={s.systemLabel}>Войти через</div>
+				<div className={s.systemList}>
+					<div className={s.system}>
+						<Image
+							width={60}
+							height={20}
+							alt="google"
+							src="/images/login/google.svg"
+						/>
+					</div>
+					<div className={s.system}>
+						<Image
+							width={60}
+							height={12}
+							alt="facebook"
+							src="/images/login/facebook.svg"
+						/>
+					</div>
+					<div className={s.system}>
+						<Image
+							width={56}
+							height={16}
+							alt="yandex"
+							src="/images/login/yandex.svg"
+						/>
+					</div>
+				</div>
+			</div>
 		</Form>
 	);
 };

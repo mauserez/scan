@@ -1,0 +1,122 @@
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.mainSection {
+	justify-content: space-between;
+	display: flex;
+}
+
+.mainSectionTitle {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+}
+
+.title {
+	font-family: var(--font-ferry);
+	font-size: 40px;
+	max-width: 500px;
+}
+
+.smallTitle {
+	font-size: 20px;
+	letter-spacing: 0.02em;
+}
+
+.image {
+	width: 552px;
+	height: 369px;
+	position: relative;
+	margin-right: 50px;
+}
+
+.subTitle {
+	font-family: var(--font-ferry);
+	font-size: 30px;
+}
+
+.subTitleNote {
+	color: #949494;
+	font-size: 18px;
+	margin-top: 17px;
+}
+
+.scrollerSection {
+	display: flex;
+	flex-direction: column;
+	gap: 27px;
+}
+
+.scroller {
+	width: 100%;
+	border: 1px solid var(--secondary-color);
+	min-height: 140px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: flex;
+}
+
+.scrollerTitle {
+	background-color: var(--secondary-bg);
+	font-size: 20px;
+	min-width: 135px;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+	padding: 17px 27px;
+	color: var(--white-color);
+	justify-content: center;
+}
+
+.scrollerBody {
+	background-color: var(--white-color);
+	flex: 1;
+	display: flex;
+	padding: 17px 0;
+}
+
+.scrollerBodyItem {
+	font-size: 18px;
+	flex-direction: column;
+	gap: 26px;
+	border-right: 2px solid #94949450;
+	justify-content: center;
+	padding: 0 18px;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+}
+
+.docSection {
+	display: flex;
+	flex-direction: column;
+	gap: 58px;
+	margin-top: 100px;
+}
+
+.docList {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 50%));
+	gap: 38px;
+}
+
+@media screen and (max-width: 1024px) {
+	.docList {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+.showMore {
+	margin-top: 36px;
+	width: 305px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+	.showMore {
+		width: 100%;
+	}
+}
