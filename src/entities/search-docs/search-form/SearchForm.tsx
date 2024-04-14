@@ -61,8 +61,6 @@ export const SearchForm = () => {
 	return (
 		<Form
 			onSubmit={form.onSubmit((values) => {
-				console.log(values);
-
 				const valuesToSearch = {
 					...values,
 					dateFrom: dayjs(values.dateFrom).format("DD.MM.YYYY"),

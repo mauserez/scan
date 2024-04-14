@@ -2,12 +2,11 @@
 
 import { Button } from "@/shared/ui";
 import Image from "next/image";
-import s from "./MainInfo.module.css";
 import { useRouter } from "next/navigation";
-import { useIsAuth } from "@/shared/session/clientHooks";
+import { SessionComponent } from "@/shared/ui";
+import s from "./MainInfo.module.css";
 
 export const MainInfo = () => {
-	const auth = useIsAuth();
 	const router = useRouter();
 
 	return (
@@ -22,16 +21,18 @@ export const MainInfo = () => {
 					Комплексный анализ публикаций, получение данных
 					<br /> в формате PDF на электронную почту.
 				</div>
-				{auth ? (
-					<Button
-						onClick={() => {
-							router.push("/search");
-						}}
-						className={s.btn}
-					>
-						Запросить данные
-					</Button>
-				) : null}
+				<SessionComponent
+					auth={
+						<Button
+							onClick={() => {
+								router.push("/search");
+							}}
+							className={s.btn}
+						>
+							Запросить данные
+						</Button>
+					}
+				/>
 			</div>
 			<div className={s.image}>
 				<Image

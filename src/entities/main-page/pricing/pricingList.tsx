@@ -1,3 +1,4 @@
+import { isAuth } from "@/shared/session/serverHooks";
 import { Pricing } from "./pricing-card/PricingCard";
 import Image from "next/image";
 
@@ -6,6 +7,7 @@ export const PRICING_LIST: Pricing[] = [
 		title: {
 			titleText: "Beginner",
 			titleDescription: "Для небольшого исследования",
+			titleBack: "#FFB64F",
 			titleImage: (
 				<Image
 					priority
@@ -26,7 +28,6 @@ export const PRICING_LIST: Pricing[] = [
 			"Безопасная сделка",
 			"Поддержка 24/7",
 		],
-		current: true,
 	},
 	{
 		title: {

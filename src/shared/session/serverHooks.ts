@@ -1,4 +1,5 @@
 "use server";
+
 import { getServerSession } from "next-auth";
 import { authConfig } from "../../../auth.config";
 
@@ -13,5 +14,5 @@ export const sessionUser = async () => {
 
 export const isAuth = async () => {
 	const session = await getServerSession(authConfig);
-	return !!session?.user.accessToken;
+	return !!session;
 };

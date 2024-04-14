@@ -22,7 +22,7 @@ export const SearchDocs = () => {
 
 				<div className={s.form}>
 					<div className={s.docImage}>
-						<Image src="/images/search/doc.svg" fill alt="doc" />
+						<Image priority src="/images/search/doc.svg" fill alt="doc" />
 					</div>
 					<SearchForm />
 				</div>
@@ -34,6 +34,7 @@ export const SearchDocs = () => {
 
 			<div className={s.image}>
 				<Image
+					priority
 					src="/images/search/man-with-rocket.svg"
 					width={442}
 					height={470}

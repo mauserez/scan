@@ -46,13 +46,16 @@ export const PricingCard = (props: PricingCardProps) => {
 	const { priceNow, priceLined = null, priceDescription } = price;
 
 	return (
-		<Card className={clsx({ [s.card]: true, [s.curCard]: current })}>
+		<Card
+			style={current ? { border: `1px solid ${titleBack}` } : undefined}
+			className={s.card}
+		>
 			<div
 				style={{
 					backgroundColor: titleBack || undefined,
 					color: titleColor || undefined,
 				}}
-				className={clsx({ [s.title]: true, [s.curTitle]: current })}
+				className={s.title}
 			>
 				<div className={s.titleHeader}>{titleText}</div>
 				<div>{titleDescription}</div>
@@ -92,7 +95,7 @@ export const PricingCard = (props: PricingCardProps) => {
 				</div>
 
 				<Button
-					className={clsx({ [s.cardBtn]: true, [s.curPricingBtn]: current })}
+					className={clsx({ [s.curPricingBtn]: current, [s.cardBtn]: true })}
 				>
 					{current ? "Перейти в личный кабинет" : "Подробнее"}
 				</Button>

@@ -8,6 +8,7 @@
 	position: absolute;
 	right: 400px;
 	min-width: 164px;
+	min-height: 67px;
 }
 
 @media screen and (max-width: 500px) {

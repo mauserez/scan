@@ -10,14 +10,34 @@ export const Nav = (props: NavProps) => {
 
 	const links = [
 		{ href: "/", label: "Главная" },
-		{ href: "/pricing", label: "Тарифы" },
+		{
+			href: "",
+			label: "Тарифы",
+			handle: () => {
+				const target = document.getElementById("main__pricing");
+				if (target) {
+					window.scrollTo({
+						top: target.offsetTop,
+						behavior: "smooth",
+					});
+				}
+			},
+		},
 		{ href: "/faq", label: "FAQ" },
 	];
 
 	return (
 		<nav className={s.nav}>
 			{links.map((link) => (
-				<Link onClick={closeNav} key={link.label} href={link.href}>
+				<Link
+					onClick={() => {
+						if (closeNav) {
+							closeNav();
+						}
+					}}
+					key={link.label}
+					href={link.href}
+				>
 					{link.label}
 				</Link>
 			))}
