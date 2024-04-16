@@ -31,15 +31,15 @@
 }
 
 .image {
-	width: 321px;
-	height: 342px;
+	width: 440px;
+	height: 470px;
 	align-self: flex-end;
 }
 
 .docImage {
 	position: absolute;
 	left: 850px;
-	top: 70px;
+	top: 10px;
 	width: 91px;
 	height: 111px;
 }
@@ -55,16 +55,6 @@
 @media screen and (min-width: 501px) and (max-width: 1439px) {
 	.title {
 		font-size: 35px;
-	}
-}
-
-@media screen and (max-width: 500px) {
-	.title {
-		font-size: 28px;
-	}
-
-	.subTitle {
-		font-size: 18px;
 	}
 }
 
@@ -102,7 +92,27 @@
 	.image {
 		display: none;
 	}
+
 	.foldersImage {
 		display: none;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.title {
+		font-size: 28px;
+	}
+
+	.docImage {
+		right: 24px;
+	}
+
+	.subTitle {
+		font-size: 18px;
+	}
+
+	.form {
+		margin-left: -14px;
+		width: calc(100% + 38px);
 	}
 }

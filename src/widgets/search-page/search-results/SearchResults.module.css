@@ -103,6 +103,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+	.docSection {
+		gap: 34px;
+	}
+
 	.docList {
 		grid-template-columns: 1fr;
 		gap: 20px;

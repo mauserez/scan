@@ -133,3 +133,11 @@
 		top: -81px;
 	}
 }
+
+.error {
+	text-align: center;
+	margin-top: 6px;
+	font-size: 14px;
+	color: #ff5959;
+	text-align: center;
+}

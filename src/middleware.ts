@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
  */
 // middleware.ts
 
-const protectedRoutes = ["/search", "/search-result"];
+const protectedRoutes = ["/search"];
 const onlyNotAuthRoutes = ["/login"];
 
 import { NextRequest, NextResponse } from "next/server";
@@ -38,7 +38,7 @@ export default async function middleware(req: NextRequest) {
 
 	return NextResponse.next();
 }
-
+/*
 export const config = {
 	matcher: protectedRoutes,
-};
+}; */

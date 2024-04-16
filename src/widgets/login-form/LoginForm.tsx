@@ -15,6 +15,13 @@ const types = {
 	login: "Войти",
 	register: "Зарегистрироваться",
 };
+type AssocArray = { [key: string]: string };
+
+const errorStatuses: AssocArray = {
+	"401": "Неверные данные",
+	"403": "Доступ запрещен",
+	"500": "Ошибка приложения",
+};
 
 export const LoginForm = () => {
 	const redirectUrl = String(useSearchParams().get("callbackUrl"));
@@ -50,6 +57,7 @@ export const LoginForm = () => {
 	const [type, setType] = useState<"login" | "register">("login");
 	const enabled = form.isValid("login") && form.isValid("password");
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	return (
 		<Form
@@ -66,6 +74,10 @@ export const LoginForm = () => {
 						router.push(redirectUrl);
 					} else {
 						router.push("/");
+					}
+				} else {
+					if (res?.error) {
+						setError(errorStatuses[String(res.status)]);
 					}
 				}
 
@@ -120,6 +132,8 @@ export const LoginForm = () => {
 					<Input type="password" {...form.getInputProps("password")} />
 				</div>
 			</div>
+
+			<div className={s.error}>{error}</div>
 
 			<Button loading={loading} className={s.btn} disabled={!enabled}>
 				{types[type]}

@@ -22,19 +22,11 @@
 	font-weight: 500;
 	font-size: 26px;
 	letter-spacing: 0.02em;
-}
-
-.docBadge {
-	border-radius: 5px;
-	margin-top: 18px;
-	background-color: var(--extra-bg-yellow);
-	font-size: 12px;
-	letter-spacing: 0.02em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 4px 11px;
-	width: fit-content;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .docImage {
@@ -52,6 +44,24 @@
 	margin-bottom: 32px;
 	overflow: hidden;
 	word-break: break-all;
+	line-height: 120%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 10;
+	-webkit-box-orient: vertical;
+}
+
+.docText > * {
+	margin-top: 16px;
+}
+
+.docText li {
+	list-style-type: none;
+}
+
+.docText font {
+	color: #000;
 }
 
 .docFooter {
