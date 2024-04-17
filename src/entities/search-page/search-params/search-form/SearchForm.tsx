@@ -31,7 +31,7 @@ export const SearchForm = () => {
 
 	const form = useForm({
 		initialValues: {
-			inn: "77 360 500 03",
+			inn: "",
 			tonality: "any",
 			limit: "1000",
 			from: monthStart,
