@@ -6,7 +6,6 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "./swiper.css";
 
 import { Card } from "@/shared/ui";
 import clsx from "clsx";

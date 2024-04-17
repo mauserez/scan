@@ -12,7 +12,12 @@ import "./globals.css";
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+	subsets: ["latin"],
+	display: "swap",
+	//👇 Add variable to our object
+	variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -26,7 +31,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={`${inter.variable}  font-sans`}>
 				<section className="core-section">
 					<MantineProvider>
 						<NextAuthProvider>

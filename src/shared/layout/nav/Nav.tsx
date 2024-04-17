@@ -10,19 +10,7 @@ export const Nav = (props: NavProps) => {
 
 	const links = [
 		{ href: "/", label: "Главная" },
-		{
-			href: "",
-			label: "Тарифы",
-			handle: () => {
-				const target = document.getElementById("main__pricing");
-				if (target) {
-					window.scrollTo({
-						top: target.offsetTop,
-						behavior: "smooth",
-					});
-				}
-			},
-		},
+		{ href: "/pricing", label: "Тарифы" },
 		{ href: "/faq", label: "FAQ" },
 	];
 

@@ -19,7 +19,7 @@ import { useForm } from "@mantine/form";
 import { isNumber } from "@/shared/helpers/number";
 import { checkboxes } from "./checkboxes";
 import { getSearchData } from "./api/getSearchData";
-import { SearchPageContext } from "@/app/search/page";
+import { SearchPageContext } from "../../SearchPageContext";
 
 import s from "./SearchForm.module.css";
 
@@ -31,7 +31,7 @@ export const SearchForm = () => {
 
 	const form = useForm({
 		initialValues: {
-			inn: "77 101 370 66",
+			inn: "",
 			tonality: "any",
 			limit: "1000",
 			from: monthStart,
@@ -59,6 +59,13 @@ export const SearchForm = () => {
 					preparedValue > 1000
 					? "Число от 1 до 1000"
 					: null;
+			},
+			from: (value) => {
+				return dayjs(value).isAfter(dayjs(today)) ? "Дата в будущем" : null;
+			},
+			to: (value) => {
+				const from = dayjs(form.values.from) as dayjs.Dayjs;
+				return dayjs(from).isAfter(dayjs(value)) ? "Проверьте даты" : null;
 			},
 		},
 	});

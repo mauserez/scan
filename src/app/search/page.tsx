@@ -1,13 +1,9 @@
 "use client";
 
-import { GetSearchDataResult } from "@/entities/search-page/search-form/api/getSearchData";
+import { GetSearchDataResult } from "@/entities/search-page/search-params/search-form/api/getSearchData";
 import { SearchParams, SearchResults } from "@/widgets/search-page";
-import { Dispatch, SetStateAction, useState, createContext } from "react";
-
-export const SearchPageContext = createContext<{
-	result: GetSearchDataResult | null;
-	setResult: Dispatch<SetStateAction<GetSearchDataResult | null>>;
-}>({ result: null, setResult: () => {} });
+import { useState } from "react";
+import { SearchPageContext } from "@/entities/search-page/SearchPageContext";
 
 export default function SearchPage() {
 	const [result, setResult] = useState<GetSearchDataResult | null>(null);

@@ -2,11 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	padding: 25px 25px 39px 25px;
-	//height: 100%;
 	position: relative;
 	right: 81px;
 	width: 420px;
-	//max-height: 520px;
 	position: absolute;
 	right: 81px;
 	top: 0;
@@ -95,6 +93,7 @@
 .systemList {
 	display: flex;
 	gap: 10px;
+	flex-wrap: wrap;
 }
 
 .system {
@@ -120,7 +119,7 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 	.form {
 		margin-top: 100px;
 		order: 0;

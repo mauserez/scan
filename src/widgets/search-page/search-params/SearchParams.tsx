@@ -1,12 +1,13 @@
 "use client";
 
-import { SearchForm } from "@/entities/search-page";
+import { SearchForm } from "@/entities/search-page/search-params";
 import Image from "next/image";
 import s from "./SearchParams.module.css";
+import clsx from "clsx";
 
 export const SearchParams = () => {
 	return (
-		<div className={s.container}>
+		<div className={clsx(s.container, "fade-in")}>
 			<div>
 				<div className={s.titleSection}>
 					<div className={s.title}>

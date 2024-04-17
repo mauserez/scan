@@ -1,37 +1,15 @@
 import { useContext, useEffect, useState, useRef, useCallback } from "react";
-import Image from "next/image";
-
-import { SearchPageContext } from "@/app/search/page";
-import { Button } from "@/shared/ui";
-import { plural } from "@/shared/helpers/number";
 import { mainApi } from "@/shared/axios/mainApi";
 
-import { DocCard } from "@/entities/search-page";
+import Image from "next/image";
+import { Button } from "@/shared/ui";
+
+import { SearchPageContext } from "@/entities/search-page/SearchPageContext";
+import { DocCard, DocsHistograms } from "@/entities/search-page/search-results";
+import { type Doc } from "./types";
+
 import clsx from "clsx";
 import s from "./SearchResults.module.css";
-
-export type Doc = {
-	ok: {
-		dedupClusterId: string;
-		attributes: {
-			wordCount: number;
-			isTechNews: boolean;
-			isAnnouncement: boolean;
-			isDigest: true;
-		};
-		content: {
-			markup: string;
-		};
-		source: {
-			name: string;
-		};
-		title: {
-			text: string;
-		};
-		issueDate: string;
-		url: string;
-	};
-};
 
 export const SearchResults = () => {
 	const { result } = useContext(SearchPageContext);
@@ -46,9 +24,8 @@ export const SearchResults = () => {
 	const cursorPlusLimit = cursor + limit;
 
 	const [docs, setDocs] = useState<Doc[]>([]);
-	const isFirstRender = useRef(true);
 
-	const addDocs = useCallback(async () => {
+	const addMoreDocs = useCallback(async () => {
 		const sliceFrom = cursor;
 		const sliceTo = docIdsLen < cursorPlusLimit ? docIdsLen : cursorPlusLimit;
 
@@ -63,12 +40,13 @@ export const SearchResults = () => {
 			});
 	}, [cursor, cursorPlusLimit, docIdsLen, docIds]);
 
+	const isFirstRender = useRef(true);
 	useEffect(() => {
 		if (isFirstRender.current) {
 			isFirstRender.current = false;
-			addDocs();
+			addMoreDocs();
 		}
-	}, [addDocs]);
+	}, [addMoreDocs]);
 
 	return (
 		<div className={clsx(s.container, "fade-in")}>
@@ -88,31 +66,8 @@ export const SearchResults = () => {
 					/>
 				</div>
 			</div>
-			<div className={s.scrollerSection}>
-				<div>
-					<div className={s.subTitle}>Общая сводка</div>
-					<div className={s.subTitleNote}>
-						Найдено {docIds?.length}{" "}
-						{plural(["вариант", "варианта", "вариантов"], docIds?.length || 0)}
-					</div>
-				</div>
-				<div className={s.scroller}>
-					<div className={s.scrollerTitle}>
-						<div>Период</div>
-						<div>Всего</div>
-						<div>Риски</div>
-					</div>
-					<div className={s.scrollerBody}>
-						{histograms?.map((item) => (
-							<div key={item.date} className={s.scrollerBodyItem}>
-								<div>{item.date}</div>
-								<div>{item.value}</div>
-								<div>{item.riskValue}</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
+
+			<DocsHistograms histograms={histograms} docLength={docIds?.length} />
 
 			<div className={s.docSection}>
 				<div className={s.subTitle}>Список документов</div>
@@ -127,7 +82,7 @@ export const SearchResults = () => {
 						loading={loading}
 						onClick={() => {
 							setLoading(true);
-							addDocs();
+							addMoreDocs();
 						}}
 						className={s.showMore}
 					>

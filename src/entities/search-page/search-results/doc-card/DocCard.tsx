@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 import { plural } from "@/shared/helpers/number";
 import { Card } from "@/shared/ui";
-import { Doc } from "@/widgets/search-page";
-import { DocCardBadges } from "..";
+import { type Doc } from "@/widgets/search-page/";
 import { useEffect, useRef } from "react";
 
+import { DocCardBadges } from "..";
 import s from "./DocCard.module.css";
 
 type DocCardProps = Doc;

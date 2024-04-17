@@ -72,6 +72,7 @@ export const PricingCard = (props: PricingCardProps) => {
 							<div className={s.priceLined}>{priceLined} ₽</div>
 						) : null}
 					</div>
+
 					<div className={clsx(s.priceDescription, "pricing__description")}>
 						{priceDescription !== "" ? priceDescription : <span>&nbsp;</span>}
 					</div>

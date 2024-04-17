@@ -1,0 +1,125 @@
+.container {
+	min-height: 140px;
+	display: flex;
+	position: relative;
+	margin-left: 34px;
+	margin-right: 34px;
+}
+
+.title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: var(--secondary-bg);
+	font-size: 20px;
+	min-width: 135px;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+	padding: 17px 27px;
+	color: var(--white-color);
+	justify-content: center;
+	height: 100%;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.slider {
+	border: 1px solid var(--secondary-color);
+	border-radius: 10px;
+	padding-left: 134px !important;
+	padding-right: 34px;
+	position: static;
+	width: 100%;
+}
+
+.slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	border-right: 2px solid #94949450;
+	margin-top: 17px;
+	margin-bottom: 17px;
+}
+
+.slideContent {
+	font-size: 18px;
+	flex-direction: column;
+	gap: 26px;
+	justify-content: center;
+	padding: 0 18px;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+}
+
+.slider :global(.swiper-button-next::after),
+.slider :global(.swiper-button-prev::after) {
+	content: "";
+	width: 39px;
+	height: 39px;
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: inline-block;
+}
+
+.slider :global(.swiper-button-prev::after) {
+	background: url("/images/carousel/arrow-left.svg") no-repeat;
+	left: -53px;
+}
+
+.slider :global(.swiper-button-next::after) {
+	background: url("/images/carousel/arrow-right.svg") no-repeat;
+	left: 40px;
+}
+
+@media screen and (max-width: 500px) {
+	.container {
+		flex-direction: column;
+	}
+
+	.title {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		flex-direction: row;
+		border-bottom-left-radius: 0;
+		border-top-right-radius: 10px;
+		justify-content: space-around;
+		padding: 23px 9px;
+	}
+
+	.title > div {
+		text-align: center;
+		font-size: 18px;
+	}
+
+	.slider {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		width: 100%;
+		padding-left: 0 !important;
+		padding-right: 0;
+	}
+
+	.slide {
+		border-right: none;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.slideContent {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		width: 100%;
+		justify-content: space-around;
+		padding: 18px 9px;
+	}
+
+	.slideContent > div {
+		text-align: center;
+		font-size: 16px;
+	}
+}
