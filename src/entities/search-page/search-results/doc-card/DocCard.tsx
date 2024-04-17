@@ -11,6 +11,7 @@ type DocCardProps = Doc;
 
 export const DocCard = (props: DocCardProps) => {
 	const ref = useRef<HTMLDivElement | null>(null);
+	const refImage = useRef<HTMLDivElement | null>(null);
 
 	const { ok } = props;
 	const { title, source, content, attributes, issueDate, url } = ok;
@@ -21,9 +22,12 @@ export const DocCard = (props: DocCardProps) => {
 
 	useEffect(() => {
 		if (ref.current) {
-			nodes.forEach((child) => {
+			nodes.textNodes.forEach((child) => {
 				ref.current?.append(child);
 			});
+		}
+		if (refImage.current) {
+			refImage.current?.append(nodes.image);
 		}
 	}, [nodes]);
 
@@ -42,7 +46,7 @@ export const DocCard = (props: DocCardProps) => {
 
 				<DocCardBadges attributes={attributes} />
 
-				<div className={s.docImage}></div>
+				{nodes.image ? <div ref={refImage} className={s.docImage}></div> : null}
 				<div className={s.docText} ref={ref}></div>
 				<div className={s.docFooter}>
 					<button className={s.docButton}>
@@ -83,6 +87,26 @@ const parseXmlContent = (xmlString: string) => {
 	});
 
 	const document = parser.parseFromString(text, "text/html");
+	const images = document.getElementsByTagName("img");
 
-	return document.body.childNodes;
+	if (images) {
+		const l = images.length;
+		for (let i = 0; i < l; i++) {
+			if (images[0].parentNode) {
+				images[0].parentNode.removeChild(images[0]);
+			}
+		}
+	}
+
+	const documentClone = parser.parseFromString(text, "text/html");
+	const imagesClone = documentClone.getElementsByTagName("img");
+	const firstImage = imagesClone[0];
+
+	if (firstImage) {
+		firstImage.onerror = () => {
+			firstImage.style.display = "none";
+		};
+	}
+
+	return { textNodes: document.body.childNodes, image: firstImage || null };
 };
